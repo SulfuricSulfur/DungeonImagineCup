@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
 
@@ -18,8 +19,14 @@ public class Health : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (health <= 0)
-            Destroy(this.gameObject);
-
+        {
+            if (tag != "Player")
+                Destroy(gameObject);
+            else
+            {
+                SceneManager.LoadScene("level_1");
+            }
+        }
         if (timer >= invTime && isDamaged)
         {
             health -= damage;

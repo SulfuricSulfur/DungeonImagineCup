@@ -13,7 +13,6 @@ public class ShootingSystem : MonoBehaviour {
     public float maxDamage = 3f;
     public int maxAmmo = 6;
     int currentAmmo;
-    float Range;
     int Damage;
     bool reloading;
     float reloadTimer;
@@ -58,14 +57,11 @@ public class ShootingSystem : MonoBehaviour {
 
         if (Physics.Raycast(CameraTransform.position, CameraTransform.TransformDirection(Vector3.forward), out hitRay))
         {
-            Debug.Log("did the raycast");
-            Range = hitRay.distance;
             if (hitRay.collider.tag == "Enemy" && hitRay.distance < MaxRange)
             {
-                Debug.Log("hit an enemy");
                 hitRay.collider.gameObject.GetComponent<Health>().takeDamage(Damage);
 
-                Quaternion prefabRot = Quaternion.FromToRotation(Vector3.up, hitRay.normal);
+                //Quaternion prefabRot = Quaternion.FromToRotation(Vector3.up, hitRay.normal);
                 //Instantiate(bloodParticle, hitRay.point, prefabRot);
             }
         }
