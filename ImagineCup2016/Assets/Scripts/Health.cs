@@ -17,7 +17,10 @@ public class Health : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(timer >= invTime && isDamaged)
+        if (health <= 0)
+            Destroy(this.gameObject);
+
+        if (timer >= invTime && isDamaged)
         {
             health -= damage;
             timer = 0;
