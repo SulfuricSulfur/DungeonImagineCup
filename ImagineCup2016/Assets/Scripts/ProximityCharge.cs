@@ -4,7 +4,7 @@ using System.Collections;
 public class ProximityCharge : MonoBehaviour {
 
     NavMeshAgent agent;
-    public GameObject player;
+    GameObject player;
     public int speed;
     public int acceleration;
     public int proximity;
@@ -23,7 +23,11 @@ public class ProximityCharge : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         agent.acceleration = acceleration;
+<<<<<<< HEAD
         //ws = this.GetComponent<WanderScript>();
+=======
+        player = GameObject.FindGameObjectWithTag("Player");
+>>>>>>> 2621dc965c0caa08d197fe9a68da976966f91987
     }
 	
 	// Update is called once per frame
