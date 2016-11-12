@@ -10,7 +10,7 @@ public class MeleeSwing : MonoBehaviour {
     public float swingSpd=0.30f;//the speed of the weapon
     public float timer=0f;//the timer of the swing
 
-    public float maxUp=-40.0f;//max angle up;
+    public float maxUp=320.0f;//max angle up;
     public float maxDown=40.0f;//the min angle swinging down;
 
     private bool center;//tells if melee should return to center;
@@ -24,6 +24,7 @@ public class MeleeSwing : MonoBehaviour {
         swingRot = transform.eulerAngles;
         center = false;
         start = false;
+        swingDown = false;
 	}
 	
     public bool Attack
@@ -44,19 +45,39 @@ public class MeleeSwing : MonoBehaviour {
         if(attack==true)
         {
             timer += Time.deltaTime;
-            if(start==true && swingRot.x >maxUp)
-            {
+            if(start==true && swingRot.x < maxUp && swingRot.x >=360)
+            { 
+                transform.Rotate(-Vector3.right * Time.deltaTime * swingSpd);
                 
             }
-            else if()
+            /*
+            else if((start==false && swingDown==true && center ==false)&& swingRot.x < maxDown && swingRot.x < maxDown)
             {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, swingRot, swingSpd);
+                //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, swingRot, swingSpd);
+                transform.Rotate(Vector3.right * Time.deltaTime * swingSpd);
             }
-            else if(timer >swingTime)
+            else if(center==true && swingRot.x > 0)
             {
-                timer = 0f;
+                transform.Rotate(-Vector3.right * Time.deltaTime * swingSpd);
+            }
+            */
+            if(swingRot.x <= maxUp)
+            {
+                swingDown = true;
+                start = false;
+            }
+            if(swingRot.x >= maxDown)
+            {
+                swingDown = false;
+                center = true;
+            }
+            if(swingRot.x <=0 && center==true)
+            {
+                center = false;
                 attack = false;
             }
+
+            Debug.Log(swingRot.x);
         }
    
 	}
