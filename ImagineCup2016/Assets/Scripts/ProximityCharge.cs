@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NavCharScript : MonoBehaviour {
+public class ProximityCharge : MonoBehaviour {
 
     NavMeshAgent agent;
     GameObject player;
-    bool triggered;
 
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 7;
-        agent.acceleration = 10;
+        agent.acceleration = 30;
         player = GameObject.Find("Player");
-        triggered = false;
     }
 	
 	// Update is called once per frame
