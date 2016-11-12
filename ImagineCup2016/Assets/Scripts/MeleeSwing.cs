@@ -48,10 +48,12 @@ public class MeleeSwing : MonoBehaviour {
             {
                 
             }
+            /*
             else if()
             {
                 transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, swingRot, swingSpd);
             }
+            */
             else if(timer >swingTime)
             {
                 timer = 0f;
