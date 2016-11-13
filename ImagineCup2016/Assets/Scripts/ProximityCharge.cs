@@ -20,9 +20,13 @@ public class ProximityCharge : MonoBehaviour {
         agent.speed = speed;
         agent.acceleration = acceleration;
         ws = this.GetComponent<WanderScript>();
+<<<<<<< HEAD
 
         player = GameObject.FindGameObjectWithTag("Player");
 
+=======
+        player = GameObject.FindGameObjectWithTag("Player");
+>>>>>>> 0054a2462ffc1331e887528a4b69bae300bcb9ad
     }
 	
 	// Update is called once per frame
