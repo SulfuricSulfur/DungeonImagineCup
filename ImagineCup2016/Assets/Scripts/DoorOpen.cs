@@ -6,6 +6,7 @@ public class DoorOpen : MonoBehaviour {
 
     private int numObj = 3;//number of objects in the scene
     private static int currObj;//current num obj the player has
+    public string sceneName;
 	// Use this for initialization
 
     public static int CurrObj
@@ -36,7 +37,7 @@ public class DoorOpen : MonoBehaviour {
             {
                 Debug.Log("collected everything");
                 //Application.SceneManager("level_2");
-                SceneManager.LoadScene("level_2");
+                SceneManager.LoadScene(sceneName);
             }
         }
     }

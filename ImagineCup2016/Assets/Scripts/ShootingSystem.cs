@@ -7,6 +7,8 @@ public class ShootingSystem : MonoBehaviour {
     public ParticleSystem bloodParticle;
     public AudioSource shootSound;
     public AudioSource hitSound;
+    public Material idleGun;
+    public Material fireGun;
 
     public float MaxRange = 15;
     public float minDamage = 1f;
@@ -16,12 +18,14 @@ public class ShootingSystem : MonoBehaviour {
     int Damage;
     bool reloading;
     float reloadTimer;
+    Renderer rend;
 
     void Start() {
         Damage = (int)Random.Range(minDamage, maxDamage);
         reloadTimer = 0;
         reloading = false;
         currentAmmo = maxAmmo;
+        rend = GameObject.FindGameObjectWithTag("weapon").GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -32,15 +36,25 @@ public class ShootingSystem : MonoBehaviour {
             ShootWeapon();
             currentAmmo--;
             Debug.Log(currentAmmo);
+            rend.material = fireGun;
+        }
+        else
+        {
+            rend.material = idleGun;
         }
 
         if (Input.GetKeyDown(KeyCode.R))
             reloading = true;
 
         if (reloading)
-            reloadTimer += Time.deltaTime; ;
+        {
+            reloadTimer += Time.deltaTime;
+            rend.enabled = false;
+        }
+        else
+            rend.enabled = true;
 
-        if(reloadTimer >= 3)
+        if(reloadTimer >= 2)
         {
             reloading = false;
             currentAmmo = maxAmmo;
