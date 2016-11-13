@@ -6,28 +6,23 @@ public class ProximityCharge : MonoBehaviour {
     NavMeshAgent agent;
     GameObject player;
     public int speed;
+    public int wanderSpd;
     public int acceleration;
     public int proximity;
 
     public bool canWander;//tells if this AI can wander
-    private bool seesPlayer;//tells if the AI sees the player and thus should no longer wander
     public WanderScript ws;
 
-    public bool SeesPlayer
-    {
-        get { return seesPlayer; }
-    }
 
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         agent.acceleration = acceleration;
-<<<<<<< HEAD
-        //ws = this.GetComponent<WanderScript>();
-=======
+        ws = this.GetComponent<WanderScript>();
+
         player = GameObject.FindGameObjectWithTag("Player");
->>>>>>> 2621dc965c0caa08d197fe9a68da976966f91987
+
     }
 	
 	// Update is called once per frame
@@ -37,21 +32,15 @@ public class ProximityCharge : MonoBehaviour {
             Vector3 playerPos = player.transform.position;
             if (Vector3.Distance(playerPos, transform.position) < proximity)
             {
-                seesPlayer = true;//player in range
+                agent.SetDestination(playerPos);
+                agent.speed = speed;
             }
             else//player not in range
             {
-                seesPlayer = false;
+                ws.UpdateWander();
+                agent.speed = wanderSpd;
             }
 
-            if (seesPlayer==true)
-            {
-                 agent.SetDestination(playerPos);              
-            }
-            else if(seesPlayer==false)
-            {
-                ws.UpdateWander();
-            }
 
         }
         if(canWander==false)
