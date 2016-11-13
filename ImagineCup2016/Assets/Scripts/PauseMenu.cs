@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour {
 
     public Canvas mainCanvas;
     public Canvas helpMen;
-    public Button backHelp;
+
     public Button backGame;
     public Button mainMen;
     public Button helpMenuBtn;
