@@ -8,7 +8,6 @@ public class PauseMenu : MonoBehaviour {
 
     public Canvas mainCanvas;
     public Canvas helpMen;
-
     public Button backGame;
     public Button mainMen;
     public Button helpMenuBtn;
@@ -71,6 +70,10 @@ public class PauseMenu : MonoBehaviour {
             PauseWorld();
             Cursor.visible = true;
             Player.GetComponent<FirstPersonController>().enabled = false;
+            //helpMen.enabled = true;
+            helpMenuBtn.enabled = true;
+            backGame.enabled = true;
+            mainMen.enabled = true;
         }
         else if (Time.timeScale == 0 && isPaused == false)
         {
