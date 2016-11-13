@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ProximityTransform : MonoBehaviour {
 
-    public GameObject player;
+    GameObject player;
     public int proximity;
     public Material idle;
     public Material active;
@@ -12,6 +12,7 @@ public class ProximityTransform : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rend = GetComponent<Renderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	
 	// Update is called once per frame

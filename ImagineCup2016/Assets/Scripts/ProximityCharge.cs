@@ -8,7 +8,8 @@ public class ProximityCharge : MonoBehaviour {
     public int speed;
     public int wanderSpd;
     public int acceleration;
-    public int proximity;
+    public int proximity = 10;
+    public int Damage = 1;
 
     public bool canWander;//tells if this AI can wander
     public WanderScript ws;
@@ -20,13 +21,7 @@ public class ProximityCharge : MonoBehaviour {
         agent.speed = speed;
         agent.acceleration = acceleration;
         ws = this.GetComponent<WanderScript>();
-<<<<<<< HEAD
-
         player = GameObject.FindGameObjectWithTag("Player");
-
-=======
-        player = GameObject.FindGameObjectWithTag("Player");
->>>>>>> 0054a2462ffc1331e887528a4b69bae300bcb9ad
     }
 	
 	// Update is called once per frame
@@ -54,6 +49,14 @@ public class ProximityCharge : MonoBehaviour {
             {
                 agent.SetDestination(playerPos);
             }
+        }
+    }
+
+    public void OnTriggerEnter(Collider ply)
+    {
+        if (ply.tag == "Player")
+        {
+            ply.gameObject.GetComponent<Health>().takeDamage(Damage);
         }
     }
 }

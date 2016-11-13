@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class DoorOpen : MonoBehaviour {
 
-    private int numObj;//number of objects in the scene
-    private int currObj;//current num obj the player has
+    private int numObj = 3;//number of objects in the scene
+    private static int currObj;//current num obj the player has
 	// Use this for initialization
 
-    public int CurrObj
+    public static int CurrObj
     {
         get { return currObj; }
         set { currObj = value; }
@@ -20,8 +20,7 @@ public class DoorOpen : MonoBehaviour {
     }
 
 	void Start () {
-        numObj = 5;
-        currObj = 5;
+        currObj = 0;
     }
 	
 	// Update is called once per frame
@@ -32,8 +31,10 @@ public class DoorOpen : MonoBehaviour {
     {
         if(ply.tag=="Player")
         {
-            if (currObj == numObj)
+            Debug.Log("collided player"+currObj + " " + numObj);
+            if (currObj >= numObj)
             {
+                Debug.Log("collected everything");
                 //Application.SceneManager("level_2");
                 SceneManager.LoadScene("level_2");
             }

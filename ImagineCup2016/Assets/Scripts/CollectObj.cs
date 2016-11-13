@@ -4,13 +4,13 @@ using System.Collections;
 public class CollectObj : MonoBehaviour {
     //This script will be attached to the objects that will be collected
 
-    public DoorOpen levelObj;//corresponding to getting to next level
+    DoorOpen door;//corresponding to getting to next level
     public Camera MainCamera;
     public float MaxRange = 2;
 
     // Use this for initialization
     void Start () {
-	
+        door = GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>();
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,9 @@ public class CollectObj : MonoBehaviour {
             {
                 if (hitRay.collider.tag == "Collectible" && hitRay.distance < MaxRange)
                 {
-                    levelObj.CurrObj++;
+                    
+                    DoorOpen.CurrObj++;
+                    Debug.Log("collected" + DoorOpen.CurrObj);
                     Destroy(hitRay.transform.gameObject);//get rid of object
                 }
             }
