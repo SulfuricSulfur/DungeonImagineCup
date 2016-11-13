@@ -36,8 +36,9 @@ public class DoorOpen : MonoBehaviour {
             if (currObj >= numObj)
             {
                 Debug.Log("collected everything");
+				Debug.Log(sceneName);
                 //Application.SceneManager("level_2");
-                SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene("level_3");
             }
         }
     }
