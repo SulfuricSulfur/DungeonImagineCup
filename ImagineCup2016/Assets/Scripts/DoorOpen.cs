@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorOpen : MonoBehaviour {
 
-    public int numObj = 3;//number of objects in the scene
+    private int numObj = 3;//number of objects in the scene
     private static int currObj;//current num obj the player has
 	// Use this for initialization
 
