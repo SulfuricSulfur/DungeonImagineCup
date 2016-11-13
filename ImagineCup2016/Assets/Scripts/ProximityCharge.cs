@@ -7,7 +7,8 @@ public class ProximityCharge : MonoBehaviour {
     GameObject player;
     public int speed;
     public int acceleration;
-    public int proximity;
+    public int proximity = 10;
+    public int Damage = 1;
 
     public bool canWander;//tells if this AI can wander
     private bool seesPlayer;//tells if the AI sees the player and thus should no longer wander
@@ -58,6 +59,14 @@ public class ProximityCharge : MonoBehaviour {
             {
                 agent.SetDestination(playerPos);
             }
+        }
+    }
+
+    public void OnTriggerEnter(Collider ply)
+    {
+        if (ply.tag == "Player")
+        {
+            ply.gameObject.GetComponent<Health>().takeDamage(Damage);
         }
     }
 }

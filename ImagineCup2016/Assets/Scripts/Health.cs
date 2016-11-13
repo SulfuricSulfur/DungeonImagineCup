@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour {
 
     public int health;
-    public int invTime;
-    int timer;
+    public float invTime;
+    float timer;
     bool isDamaged;
     int damage;
 
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour {
             timer = 0;
             isDamaged = false;
         }
-        timer++;
+        timer += Time.deltaTime;
 	}
 
     public void takeDamage(int damage)

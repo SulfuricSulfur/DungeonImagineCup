@@ -59,6 +59,7 @@ public class ShootingSystem : MonoBehaviour {
         {
             if (hitRay.collider.tag == "Enemy" && hitRay.distance < MaxRange)
             {
+                Debug.Log("hit");
                 hitRay.collider.gameObject.GetComponent<Health>().takeDamage(Damage);
 
                 //Quaternion prefabRot = Quaternion.FromToRotation(Vector3.up, hitRay.normal);
